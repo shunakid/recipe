@@ -3,7 +3,7 @@ import axios from 'axios'
 const chatGPT = async (prompt) => {
   try {
     const response = await axios.post(
-      'https://api.openai.com/v1/engines/davinci-codex/completions',
+      'https://api.openai.com/v1/engines/text-davinci-002/completions',
       {
         prompt,
         max_tokens: 150,
@@ -21,7 +21,7 @@ const chatGPT = async (prompt) => {
 
     return response.data.choices[0].text
   } catch (error) {
-    console.error(error)
+    console.error(error.response.data)
     return 'エラーが発生しました。'
   }
 }
